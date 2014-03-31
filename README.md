@@ -1,5 +1,5 @@
-Compare Asynchronous Programming Patterns in JavaScript/NodeJS
-==============================================================
+Comparing Asynchronous Programming Patterns in JavaScript/NodeJS
+================================================================
 
 [Wat?]
 ------
@@ -36,12 +36,13 @@ Observations
 ------------
 
 Before going into detail about each approach, a couple observations up front:
-1. Break every step or operation into as small of a function as possible and reasonable; it will make recomposition much easier.
-2. **DRY, I mean really don't repeat yourself.** The moment you find yourself copying and pasting *anything* or typing the same thing twice, refactor it into a function (see above), object, or variable.
-3. Use closure factories and other functional programming features to compose functionality.
-4. Specifically, package synchronous business logic into associated asynchronous functions or wrap it to make it pseudo-asynchronous, i.e. making it follow the aformentioned node callback style.
 
-Plain Chained (or nested) Callbacks
+ 1. Break every step or operation into as small of a function as possible and reasonable; it will make recomposition much easier.
+ 2. **DRY, I mean really don't repeat yourself.** The moment you find yourself copying and pasting *anything* or typing the same thing twice, refactor it into a function (see above), object, or variable.
+ 3. Use closure factories and other functional programming features to compose functionality.
+ 4. Specifically, package synchronous business logic into associated asynchronous functions or wrap it to make it pseudo-asynchronous, i.e. making it follow the aformentioned node callback style.
+
+Plain Chained (or Nested) Callbacks
 -----------------------------------
 
 The trivial implementation is relatively straight-forward and still somewhat remotely readable:
@@ -59,7 +60,7 @@ function pyramidOfDoom(done) {
 ```
 The drawbacks of using this approach in general can already be observed here:
 
- 1. This will be difficult to test each execution branch of this code. There's no way to stub out the request or the writing of the file from outside the module (unless the associated methods where made exports, which is a really bad idea).
+ 1. It will be difficult to test each execution branch of this code. There's no way to stub out the request or the writing of the file from outside the module (unless the associated methods were made exports, which is a really bad idea).
  2. Each 'step' in this function is essentially a 1-liner. If these were more complex steps to get the result, apply some business logic, or publish the result somewhere, to code would quickly become a lot less readable. 
 
  A possible workaround for this is shown in the second version using chained callbacks:
@@ -73,7 +74,7 @@ function pyramidOfDoomWithFunctions(done) {
       done(error)
     }  
   })
-ß}
+}
 ```
 
 Here, some of the functionality has been refactored into separate functions that have been reduced to taking the callbacks. Those functions could be provided by objects that are parameterized appropriately, but it's not clear that this is really improving readability. In addition, because the `businessLogic` method does not take a callback, an anonymous function to propagate the chain has to be used, which results in code that is not really any more comprehensible/traceable than the first version. Refactoring out this method, too, improves things a little bit
