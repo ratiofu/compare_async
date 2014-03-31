@@ -1,0 +1,35 @@
+{
+  "name": "compare_async",
+  "version": "0.0.1",
+  "description": "comparing callback and Promise-based approaches for asynchronous programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tjconsult/compare_async"
+  },
+  "keywords": [
+    "q",
+    "async",
+    "promises",
+    "futures",
+    "concurrent"
+  ],
+  "author": "Thomas Jung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjconsult/compare_async/issues"
+  },
+  "homepage": "https://github.com/tjconsult/compare_async",
+  "devDependencies": {
+    "mocha": ">= 1.18.2",
+    "should": ">= 3.1.0"
+  },
+  "dependencies": {
+    "request": ">= 2.34.0",
+    "async": ">= 0.4.0",
+    "q": "~1.0.1"
+  }
+}
