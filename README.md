@@ -158,4 +158,4 @@ WTFPL
 [pyramid of doom]:http://javascriptjabber.com/001-jsj-asynchronous-programming/
 [1]:https://github.com/kriskowal/q#readme
 [Wat?]:https://www.destroyallsoftware.com/talks/wat
-[Mocha]:http://visionmedia.github.io/mocha/
+[Mocha]:http://mochajs.org/
